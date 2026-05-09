@@ -1,0 +1,238 @@
+.LC0:
+  .string "vector::_M_realloc_insert"
+flat_search(float*, float*, unsigned long, unsigned long, unsigned long):
+  stp x29, x30, [sp, -112]! //,,,
+  mov x29, sp //,
+  stp x21, x22, [sp, 32] //,,
+  mov x22, x8 // <retval>, tmp236
+  stp xzr, xzr, [x8] //,, MEM[(struct _Vector_impl_data *)q_23(D)]._M_start
+  str xzr, [x8, 16] //, MEM[(struct _Vector_impl_data *)q_23(D)]._M_end_of_storage
+  cbz x2, .L34 // base_number,
+  stp x19, x20, [sp, 16] //,,
+  mov x21, x1 // query, tmp238
+  mov x19, x0 // ivtmp.216, base
+  stp x23, x24, [sp, 48] //,,
+  lsl x20, x3, 2 // _202, vecdim,
+  mov x24, x2 // base_number, tmp239
+  stp x25, x26, [sp, 64] //,,
+  mov x23, 0 // ivtmp.208,
+  mov x25, x3 // vecdim, tmp240
+  str x27, [sp, 80] //,
+  mov x26, x4 // k, tmp241
+  str d8, [sp, 88] //,
+  mov x1, 0 // pretmp_233,
+  mov x0, 0 // pretmp_231,
+  fmov s8, 1.0e+0 // _243,
+  cbz x25, .L55 // vecdim,
+.L74:
+  movi v0.2s, #0 // dis
+  mov x5, 0 // ivtmp.205,
+.L37:
+  ldr s2, [x19, x5] // MEM[base: _228, index: ivtmp.205_98, offset: 0B], MEM[base: _228, index: ivtmp.205_98, offset: 0B]
+  ldr s1, [x21, x5] // MEM[base: query_27(D), index: ivtmp.205_98, offset: 0B], MEM[base: query_27(D), index: ivtmp.205_98, offset: 0B]
+  add x5, x5, 4 // ivtmp.205, ivtmp.205,
+  fmadd s0, s2, s1, s0 // dis, MEM[base: _228, index: ivtmp.205_98, offset: 0B], MEM[base: query_27(D), index: ivtmp.205_98, offset: 0B], dis
+  cmp x20, x5 // _202, ivtmp.205
+  bne .L37 //,
+  sub x2, x1, x0 // tmp186, pretmp_233, pretmp_231
+  fsub s0, s8, s0 // _243, _243, dis
+  cmp x26, x2, asr 3 // k, tmp186,
+  bhi .L73 //,
+.L38:
+  ldr s1, [x0] // MEM[(const struct value_type &)prephitmp_232].first, MEM[(const struct value_type &)prephitmp_232].first
+  fcmpe s1, s0 // MEM[(const struct value_type &)prephitmp_232].first, _243
+  bgt .L61 //,
+.L41:
+  add x23, x23, 1 // ivtmp.208, ivtmp.208,
+  add x19, x19, x20 // ivtmp.216, ivtmp.216, _202
+  cmp x24, x23 // base_number, ivtmp.208
+  beq .L72 //,
+.L75:
+  ldp x0, x1, [x22] // pretmp_231, pretmp_233, MEM[(const struct vector *)q_23(D)].D.23172._M_impl.D.22481._M_start
+  cbnz x25, .L74 // vecdim,
+.L55:
+  sub x2, x1, x0 // tmp186, pretmp_233, pretmp_231
+  fmov s0, 1.0e+0 // _243,
+  cmp x26, x2, asr 3 // k, tmp186,
+  bls .L38 //,
+.L73:
+  ldr x2, [x22, 16] // MEM[(struct vector *)q_23(D)].D.23172._M_impl.D.22481._M_end_of_storage, MEM[(struct vector *)q_23(D)].D.23172._M_impl.D.22481._M_end_of_storage
+  str s0, [sp, 104] // _243, MEM[(struct pair *)_166].first
+  str w23, [sp, 108] // ivtmp.208, MEM[(struct pair *)_166].second
+  cmp x2, x1 // MEM[(struct vector *)q_23(D)].D.23172._M_impl.D.22481._M_end_of_storage, pretmp_233
+  beq .L39 //,
+  ldr x2, [sp, 104] // MEM[(struct pair *)_166], MEM[(struct pair *)_166]
+  str x2, [x1], 8 // MEM[(struct pair *)_166], *prephitmp_234
+  str x1, [x22, 8] // _64, MEM[(struct vector *)q_23(D)].D.23172._M_impl.D.22481._M_finish
+.L40:
+  ldr x3, [x1, -8] //, MEM[(struct pair &)prephitmp_268 + 18446744073709551608]
+  sub x2, x1, x0 // tmp193, _64, pretmp_231
+  add x23, x23, 1 // ivtmp.208, ivtmp.208,
+  add x19, x19, x20 // ivtmp.216, ivtmp.216, _202
+  asr x1, x2, 3 // tmp195, tmp193,
+  mov x2, 0 //,
+  sub x1, x1, #1 //, tmp195,
+  bl void std::__push_heap<__gnu_cxx::__normal_iterator<std::pair<float, unsigned int>*, std::vector<std::pair<float, unsigned int>, std::allocator<std::pair<float, unsigned int>>>>, long, std::pair<float, unsigned int>, __gnu_cxx::__ops::_Iter_comp_val<std::less<std::pair<float, unsigned int>>>>(__gnu_cxx::__normal_iterator<std::pair<float, unsigned int>*, std::vector<std::pair<float, unsigned int>, std::allocator<std::pair<float, unsigned int>>>>, long, long, std::pair<float, unsigned int>, __gnu_cxx::__ops::_Iter_comp_val<std::less<std::pair<float, unsigned int>>>&) (.isra.0) //
+  cmp x24, x23 // base_number, ivtmp.208
+  bne .L75 //,
+.L72:
+  ldp x19, x20, [sp, 16] //,,
+  ldp x23, x24, [sp, 48] //,,
+  ldp x25, x26, [sp, 64] //,,
+  ldr x27, [sp, 80] //,
+  ldr d8, [sp, 88] //,
+.L34:
+  mov x0, x22 //, <retval>
+  ldp x21, x22, [sp, 32] //,,
+  ldp x29, x30, [sp], 112 //,,,
+  ret 
+.L61:
+  ldr x2, [x22, 16] // MEM[(struct vector *)q_23(D)].D.23172._M_impl.D.22481._M_end_of_storage, MEM[(struct vector *)q_23(D)].D.23172._M_impl.D.22481._M_end_of_storage
+  str s0, [sp, 104] // _243, MEM[(struct pair *)_166].first
+  str w23, [sp, 108] // ivtmp.208, MEM[(struct pair *)_166].second
+  cmp x2, x1 // MEM[(struct vector *)q_23(D)].D.23172._M_impl.D.22481._M_end_of_storage, pretmp_233
+  beq .L43 //,
+  ldr x2, [sp, 104] // MEM[(struct pair *)_166], MEM[(struct pair *)_166]
+  str x2, [x1], 8 // MEM[(struct pair *)_166], *prephitmp_234
+  str x1, [x22, 8] // _76, MEM[(struct vector *)q_23(D)].D.23172._M_impl.D.22481._M_finish
+.L44:
+  ldr x3, [x1, -8] //, MEM[(struct pair &)prephitmp_248 + 18446744073709551608]
+  sub x2, x1, x0 // tmp202, _76, pretmp_231
+  asr x1, x2, 3 // tmp204, tmp202,
+  mov x2, 0 //,
+  sub x1, x1, #1 //, tmp204,
+  bl void std::__push_heap<__gnu_cxx::__normal_iterator<std::pair<float, unsigned int>*, std::vector<std::pair<float, unsigned int>, std::allocator<std::pair<float, unsigned int>>>>, long, std::pair<float, unsigned int>, __gnu_cxx::__ops::_Iter_comp_val<std::less<std::pair<float, unsigned int>>>>(__gnu_cxx::__normal_iterator<std::pair<float, unsigned int>*, std::vector<std::pair<float, unsigned int>, std::allocator<std::pair<float, unsigned int>>>>, long, long, std::pair<float, unsigned int>, __gnu_cxx::__ops::_Iter_comp_val<std::less<std::pair<float, unsigned int>>>&) (.isra.0) //
+  ldp x0, x1, [x22] // _83, _84, MEM[(struct pair * const &)q_23(D)]
+  sub x2, x1, x0 // tmp206, _84, _83
+  cmp x2, 8 // tmp206,
+  bgt .L76 //,
+.L45:
+  sub x1, x1, #8 // tmp230, _84,
+  str x1, [x22, 8] // tmp230, MEM[(struct vector *)q_23(D)].D.23172._M_impl.D.22481._M_finish
+  b .L41 //
+.L76:
+  sub x3, x1, #8 // tmp207, _84,
+  ldr w4, [x1, -8] // __value$first, MEM[(struct pair &)_84 + 18446744073709551608].first
+  sub x3, x3, x0 // _96, tmp207, _83
+  ldr s0, [x0] // _93, MEM[(float &)_83]
+  ldr w5, [x1, -4] //, MEM[(struct pair &)_84 + 18446744073709551608].second
+  asr x9, x3, 3 // _97, _96,
+  ldr w6, [x0, 4] //, MEM[(unsigned int &)_83 + 4]
+  sub x2, x9, #1 // tmp212, _97,
+  bfi x27, x4, 0, 32 // __value, __value$first,,
+  str s0, [x1, -8] // _93, MEM[(struct pair *)_84 + -8B].first
+  add x2, x2, x2, lsr 63 // tmp214, tmp212, tmp212,
+  str w6, [x1, -4] // _94, MEM[(struct pair *)_84 + -8B].second
+  bfi x27, x5, 32, 32 // __value, __value$second,,
+  asr x6, x2, 1 // _157, tmp214,
+  cmp x3, 16 // _96,
+  ble .L56 //,
+  mov x2, 0 // __holeIndex,
+  b .L50 //
+.L58:
+  mov w3, w4 // prephitmp_262, _114
+.L49:
+  lsl x2, x2, 3 // tmp219, __holeIndex,
+  add x4, x0, x2 // _117, _83, tmp219
+  str s0, [x0, x2] // _112, _117->first
+  str w3, [x4, 4] // prephitmp_262, _117->second
+  cmp x1, x6 // _107, _157
+  bge .L46 //,
+.L59:
+  mov x2, x1 // __holeIndex, _107
+.L50:
+  add x3, x2, 1 // tmp216, __holeIndex,
+  lsl x5, x3, 1 // __secondChild, tmp216,
+  lsl x3, x3, 4 // tmp217, tmp216,
+  sub x1, x5, #1 // _107, __secondChild,
+  add x8, x0, x3 // _106, _83, tmp217
+  lsl x4, x1, 3 // tmp218, _107,
+  ldr s1, [x0, x3] // _111, MEM[(const struct pair &)_106].first
+  add x7, x0, x4 // _110, _83, tmp218
+  ldr s0, [x0, x4] // _112, MEM[(const struct pair &)_110].first
+  fcmpe s1, s0 // _111, _112
+  bmi .L62 //,
+  ldr w3, [x8, 4] //, MEM[(const struct pair &)_106].second
+  bgt .L57 //,
+  ldr w4, [x7, 4] //, MEM[(const struct pair &)_110].second
+  cmp w4, w3 // _114, prephitmp_262
+  bhi .L58 //,
+.L57:
+  fmov s0, s1 // _112, _111
+  lsl x2, x2, 3 // tmp219, __holeIndex,
+  add x4, x0, x2 // _117, _83, tmp219
+  mov x1, x5 // _107, __secondChild
+  str s0, [x0, x2] // _112, _117->first
+  str w3, [x4, 4] // prephitmp_262, _117->second
+  cmp x1, x6 // _107, _157
+  blt .L59 //,
+.L46:
+  tbnz x9, 0, .L51 // _97,,
+.L78:
+  sub x9, x9, #2 // tmp221, _97,
+  add x9, x9, x9, lsr 63 // tmp224, tmp221, tmp221,
+  cmp x1, x9, asr 1 // _107, tmp224,
+  beq .L77 //,
+.L51:
+  mov x3, x27 //, __value
+  mov x2, 0 //,
+  bl void std::__push_heap<__gnu_cxx::__normal_iterator<std::pair<float, unsigned int>*, std::vector<std::pair<float, unsigned int>, std::allocator<std::pair<float, unsigned int>>>>, long, std::pair<float, unsigned int>, __gnu_cxx::__ops::_Iter_comp_val<std::less<std::pair<float, unsigned int>>>>(__gnu_cxx::__normal_iterator<std::pair<float, unsigned int>*, std::vector<std::pair<float, unsigned int>, std::allocator<std::pair<float, unsigned int>>>>, long, long, std::pair<float, unsigned int>, __gnu_cxx::__ops::_Iter_comp_val<std::less<std::pair<float, unsigned int>>>&) (.isra.0) //
+  ldr x1, [x22, 8] // _84, MEM[(struct vector *)q_23(D)].D.23172._M_impl.D.22481._M_finish
+  b .L45 //
+.L62:
+  ldr w3, [x7, 4] //, MEM[(const struct pair &)_110].second
+  b .L49 //
+.L39:
+  add x2, sp, 104 // tmp243,,
+  mov x0, x22 //, <retval>
+  bl void std::vector<std::pair<float, unsigned int>, std::allocator<std::pair<float, unsigned int>>>::_M_realloc_insert<std::pair<float, unsigned int>>(__gnu_cxx::__normal_iterator<std::pair<float, unsigned int>*, std::vector<std::pair<float, unsigned int>, std::allocator<std::pair<float, unsigned int>>>>, std::pair<float, unsigned int>&&) //
+  ldp x0, x1, [x22] // pretmp_231, _64, MEM[(struct _Vector_base *)q_23(D)]._M_impl.D.22481._M_start
+  b .L40 //
+.L43:
+  add x2, sp, 104 // tmp244,,
+  mov x0, x22 //, <retval>
+  bl void std::vector<std::pair<float, unsigned int>, std::allocator<std::pair<float, unsigned int>>>::_M_realloc_insert<std::pair<float, unsigned int>>(__gnu_cxx::__normal_iterator<std::pair<float, unsigned int>*, std::vector<std::pair<float, unsigned int>, std::allocator<std::pair<float, unsigned int>>>>, std::pair<float, unsigned int>&&) //
+  ldp x0, x1, [x22] // pretmp_231, _76, MEM[(struct _Vector_base *)q_23(D)]._M_impl.D.22481._M_start
+  b .L44 //
+.L77:
+  lsl x3, x1, 1 // __secondChild, _107,
+  lsl x2, x1, 3 // tmp226, _107,
+  add x1, x3, 1 // _107, __secondChild,
+  add x4, x0, x2 // _132, _83, tmp226
+  lsl x3, x1, 3 // tmp229, _107,
+  add x5, x0, x3 // _136, _83, tmp229
+  ldr s0, [x0, x3] // _137, MEM[(float &)_136]
+  ldr w3, [x5, 4] //, MEM[(unsigned int &)_136 + 4]
+  str s0, [x0, x2] // _137, _132->first
+  mov x2, 0 //,
+  str w3, [x4, 4] // _138, _132->second
+  mov x3, x27 //, __value
+  bl void std::__push_heap<__gnu_cxx::__normal_iterator<std::pair<float, unsigned int>*, std::vector<std::pair<float, unsigned int>, std::allocator<std::pair<float, unsigned int>>>>, long, std::pair<float, unsigned int>, __gnu_cxx::__ops::_Iter_comp_val<std::less<std::pair<float, unsigned int>>>>(__gnu_cxx::__normal_iterator<std::pair<float, unsigned int>*, std::vector<std::pair<float, unsigned int>, std::allocator<std::pair<float, unsigned int>>>>, long, long, std::pair<float, unsigned int>, __gnu_cxx::__ops::_Iter_comp_val<std::less<std::pair<float, unsigned int>>>&) (.isra.0) //
+  ldr x1, [x22, 8] // _84, MEM[(struct vector *)q_23(D)].D.23172._M_impl.D.22481._M_finish
+  b .L45 //
+.L56:
+  mov x1, 0 // _107,
+  tbnz x9, 0, .L51 // _97,,
+  b .L78 //
+  ldr x2, [x22] // _140, MEM[(struct _Vector_base *)q_23(D)]._M_impl.D.22481._M_start
+  mov x19, x0 // tmp233, tmp242
+  ldr x1, [x22, 16] // MEM[(struct _Vector_base *)q_23(D)]._M_impl.D.22481._M_end_of_storage, MEM[(struct _Vector_base *)q_23(D)]._M_impl.D.22481._M_end_of_storage
+  sub x1, x1, x2 // _142, MEM[(struct _Vector_base *)q_23(D)]._M_impl.D.22481._M_end_of_storage, _140
+  cbz x2, .L54 // _140,
+  mov x0, x2 //, _140
+  bl operator delete(void*, unsigned long) //
+.L54:
+  mov x0, x19 //, tmp233
+  bl _Unwind_Resume //
+flat_serial_wrapper(float*, float*, unsigned long, unsigned long, unsigned long):
+  stp x29, x30, [sp, -32]! //,,,
+  mov x29, sp //,
+  str x19, [sp, 16] //,
+  mov x19, x8 // <retval>, tmp99
+  bl flat_search(float*, float*, unsigned long, unsigned long, unsigned long) //
+  mov x0, x19 //, <retval>
+  ldr x19, [sp, 16] //,
+  ldp x29, x30, [sp], 32 //,,,
+  ret 
+DW.ref.__gxx_personality_v0:
+  .xword __gxx_personality_v0
