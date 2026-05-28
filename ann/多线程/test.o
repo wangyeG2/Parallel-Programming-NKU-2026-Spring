@@ -1,0 +1,8 @@
+Training KMeans...
+Building HNSW for each cluster...
+Index build and save complete.
+Starting search with nprobe=32, ef_search=100
+average recall: 0.990851
+average latency (us): 857.61
+
+Authorized users only. All activities may be monitored and reported.
