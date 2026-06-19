@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",  // 包含项目内所有头文件
+                "/usr/include"           // 标准库头文件路径（如 <immintrin.h>）
+            ],
+            "defines": [
+                "_GNU_SOURCE",           // 确保 GNU 扩展可用（如 <immintrin.h> 需要）
+                "__STDC_LIMIT_MACROS",    // 支持 <stdint.h> 的宏
+                "__STDC_CONSTANT_MACROS"  // 支持 <stdint.h> 的宏
+            ],
+            "compilerPath": "/usr/bin/g++",  // 使用 g++ 而非 gcc（C++ 代码需要）
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerArgs": [
+                "-std=c++11",            // 与编译命令一致
+                "-mavx2",                // 告知 IntelliSense 支持 AVX2
+                "-mfma"                  // 告知 IntelliSense 支持 FMA
+            ]
+        }
+    ],
+    "version": 4
+}
