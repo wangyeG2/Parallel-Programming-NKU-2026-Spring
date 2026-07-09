@@ -1,0 +1,16 @@
+# started on Fri Jun  5 13:24:00 2026
+
+
+ Performance counter stats for './main':
+
+    82,685,514,372      cycles:u                                                    
+   195,934,365,427      instructions:u            #    2.37  insn per cycle         
+       589,183,507      cache-misses:u                                              
+       108,995,591      dTLB-load-misses:u                                          
+
+      32.079973452 seconds time elapsed
+
+      31.973318000 seconds user
+       0.043777000 seconds sys
+
+

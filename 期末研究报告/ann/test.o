@@ -1,0 +1,39 @@
+Rank 0 built coarse HNSW in memory.
+Rank 21 loaded 32 cluster indices.
+Rank 30 loaded 32 cluster indices.Rank 22 loaded 32 cluster indices.
+Rank 16 loaded 32 cluster indices.
+Rank 24 loaded 32 cluster indices.
+Rank 1 loaded 32 cluster indices.
+Rank 17 loaded 32 cluster indices.
+Rank 25 loaded 32 cluster indices.
+Rank 3 loaded 32 cluster indices.
+Rank 18 loaded 32 cluster indices.
+Rank 26 loaded 32 cluster indices.
+Rank 5 loaded 32 cluster indices.
+Rank 19 loaded 32 cluster indices.
+Rank 27 loaded 32 cluster indices.
+Rank 7 loaded 32 cluster indices.
+Rank 20 loaded 32 cluster indices.
+Rank 28 loaded 32 cluster indices.
+Rank 23 loaded 32 cluster indices.
+Rank 29 loaded 32 cluster indices.
+
+Rank 31 loaded 32 cluster indices.
+Rank 0 loaded 32 cluster indices.
+Rank 2 loaded 32 cluster indices.
+Rank 4 loaded 32 cluster indices.
+Rank 6 loaded 32 cluster indices.
+Rank Rank 13 loaded 32 cluster indices.
+11 loaded 32 cluster indices.
+Index loaded from disk.
+Rank 8 loaded 32 cluster indices.
+Rank 9 loaded 32 cluster indices.
+Rank 10 loaded 32 cluster indices.
+Rank 12 loaded 32 cluster indices.
+Rank 14 loaded 32 cluster indices.
+Rank 15 loaded 32 cluster indices.
+======= MPI Performance Test Results =======
+average recall: 0.918302
+average latency (us): 538.726
+
+Authorized users only. All activities may be monitored and reported.
